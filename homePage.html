@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
     <link
@@ -13,6 +12,8 @@ rel="stylesheet">
 href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600
 &display=swap" rel="stylesheet">
     <link rel="stylesheet" href="homepage.css">
+    <script src="homepage.js"></script>
+
 </head>
 <body>
     <header class="header-content header"> 
@@ -29,6 +30,7 @@ href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600
  <div class="header-content"> 
     <div class="emp-detail-text"> 
         Employee Details 
+        <div class="emp-count">10</div>
     </div> 
     <a href="index.html" class="add-button">
     <img src="asserts\add.jpg"  alt="" width="20%" height="20%">Add User</a> 
@@ -44,7 +46,7 @@ href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600
        <th>Actions</th>
    </tr>
    <tr> 
-       <td><img class="profile" alt="" src="./img/img1.png" width="20%" height="20%"> 
+       <td><img class="profile" alt="" src="asserts\Ellipse -3.png" width="20%" height="20%"> 
        </td> 
        <td>Narayan Mahadevan</td> 
        <td>Male</td> 
@@ -61,6 +63,11 @@ href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600
 </table>
 
 </div>
-    <script src="homepage.js"></script>
+<div class="table-main">
+    <table id="display" class="table">
+    </table>
+    </div>
+</div>
+
 </body>
 </html>
