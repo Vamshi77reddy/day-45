@@ -9,9 +9,6 @@ window.addEventListener('DOMContentLoaded',(event) => {
 const getEmployeePayrollDataFromStorage = () => {
     return localStorage.getItem('employeePayrollList') ? JSON.parse(localStorage.getItem('employeePayrollList')) : [];
 }
-window.addEventListener('DOMContentLoaded', () => {
-  createInnerHtml();
-});
 
 
 const createInnerHtml = () => {
@@ -24,8 +21,9 @@ const createInnerHtml = () => {
         <th>Start Date</th>
         <th>Actions</th>`;
 
-    let employeePayrollDataList = createEmployeePayrollJSON();
+     let employeePayrollDataList = createEmployeePayrollJSON();
     let innerHtml = `${headerHtml}`;
+
     for(const employeePayrollData of employeePayrollDataList){
         innerHtml = `${innerHtml}
         <tr>
@@ -44,13 +42,7 @@ const createInnerHtml = () => {
     }
     document.querySelector('#display').innerHTML = innerHtml;
 }
-const getDepartmentHtml = (departmentList) => {
-  let departmentHtml = '';
-  for(const department of departmentList){
-    departmentHtml = `${departmentHtml} <div class='dept-label'>${department}</div>`
-  }
-  return departmentHtml
-}
+
 
 const createEmployeePayrollJSON = () => {
     let employeePayrollListLocal = [
@@ -80,4 +72,11 @@ const createEmployeePayrollJSON = () => {
       }
     ];
         return localStorage.getItem("employeePayrollList")
+}
+const getDepartmentHtml = (departmentList) => {
+  let departmentHtml = '';
+  for(const department of departmentList){
+    departmentHtml = `${departmentHtml} <div class='dept-label'>${department}</div>`
+  }
+  return departmentHtml
 }

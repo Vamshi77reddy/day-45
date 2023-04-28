@@ -1,42 +1,22 @@
-window.addEventListener('DOMContentLoaded', (event) =>{
-    const name = document.querySelector('#name');
-    const textError = document.querySelector('.text-error');
-    name.addEventListener('input', function() {
-    if(name.value.length == 0){
-        textError.textContent = "";
-        return;
-    } 
-    try{
-        (new EmployeePayRollData()).name = name.value;
-        textError.textContent = "";
-    }catch(e){
-        textError.textContent = e;
-    }
-    })
-    const salary = document.querySelector('#salary');
-    const output = document.querySelector('.salary-output');
-    output.textContent = salary.value;
-    salary.addEventListener('input',function () {
-        output.textContent = salary.value; 
-    });
-}); 
-
-
 const save = () => {
-    let employeePayrollData;
     try{
-        employeePayrollData = createEmployeePayroll();
-        createAndUpdateStorage(employeePayrollData);
+        let EmployeePayrollData = createEmployeePayroll();
+        createAndUpdateStorage(EmployeePayrollData);
     }catch(e){
         return;
     }
 }
 
 const createEmployeePayroll = () => {
-    let employeePayrollData = new EmployeePayRollData();
-    employeePayrollData.name = getInputValueById('#name');
-    employeePayrollData.profilePic = getSelectedValues('[name=profile]');
-    employeePayrollData.gender = getSelectedValues('[name=gender]');
+    let employeePayrollData = new employeePayrollData();
+    try{
+        employeePayrollData.name = getInputValueById('#name');
+    } catch (e) {
+        setTextValue('.text-error',e);
+        throw e;
+    }
+    employeePayrollData.profilePic = getSelectedValues('[name=profile]').pop();
+    employeePayrollData.gender = getSelectedValues('[name=gender]').pop();
     employeePayrollData.department = getSelectedValues('[name=department]');
     employeePayrollData.salary = getInputValueById('#salary');
     employeePayrollData.note = getInputValueById('#notes');
@@ -107,3 +87,25 @@ const setDisplay=(id,value)=>{
     const element = document.querySelector(id);
     element.textContent=value;
  }
+ window.addEventListener('DOMContentLoaded', (event) =>{
+    const name = document.querySelector('#name');
+    const textError = document.querySelector('.text-error');
+    name.addEventListener('input', function() {
+    if(name.value.length == 0){
+        textError.textContent = "";
+        return;
+    } 
+    try{
+        (new EmployeePayRollData()).name = name.value;
+        textError.textContent = "";
+    }catch(e){
+        textError.textContent = e;
+    }
+    })
+    const salary = document.querySelector('#salary');
+    const output = document.querySelector('.salary-output');
+    output.textContent = salary.value;
+    salary.addEventListener('input',function () {
+        output.textContent = salary.value; 
+    });
+}); 
